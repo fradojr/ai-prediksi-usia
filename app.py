@@ -3,11 +3,12 @@ from tensorflow.keras.models import load_model
 import numpy as np
 import os
 import cv2
-from ml import *
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = './dataset/test/'
 model = load_model('prediksi_umur.h5')
+
+class_dict = {0: 'Anak-anak', 1: 'Balita', 2: 'Remaja', 3: 'Lansia', 4: 'Dewasa'}
 
 def predict_label(img_path):
     query = cv2.imread(img_path)
@@ -19,7 +20,7 @@ def predict_label(img_path):
 
     q_pred = model.predict(q)
     i = q_pred.argmax(axis=1)[0]
-    label = lb.classes_[i]
+    label = class_dict[i]
 
     return label
 
