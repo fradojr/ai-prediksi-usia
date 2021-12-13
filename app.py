@@ -3,10 +3,13 @@ from tensorflow.keras.models import load_model
 import numpy as np
 import os
 import cv2
-from ml import *
+# from ml import *
+
+lb = None
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = './dataset/test/'
+model = load_model('prediksi_umur.h5')
 
 def predict_label(img_path):
     query = cv2.imread(img_path)
@@ -18,9 +21,9 @@ def predict_label(img_path):
 
     q_pred = model.predict(q)
     i = q_pred.argmax(axis=1)[0]
-    label = lb.classes_[i]
+    # label = lb.classes_[i]
 
-    return label
+    return i
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
