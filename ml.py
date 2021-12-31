@@ -4,23 +4,11 @@ from sklearn.metrics import classification_report
 from tensorflow.keras.models import Sequential, load_model
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.optimizers import SGD
+from var import *
 import numpy as np
 import cv2
 import glob
 import matplotlib.pyplot as plt
-
-imagePaths = 'dataset/train/'
-label_list = ['Balita', 'Anak-anak', 'Remaja', 'Dewasa', 'Lansia']
-data = []
-labels = []
-lb = None
-
-x_train = None
-x_test = None
-y_train = None
-y_test = None
-
-model = None
 
 def loadDataset():
     global imagePaths, label_list, data, labels, lb
@@ -146,8 +134,6 @@ modelTest('dataset/test/20.jpg')
 modelTest('dataset/test/27.jpg')
 modelTest('dataset/test/30.jpg')
 modelTest('dataset/test/31.jpg')
-modelTest('dataset/test/32.jpg')
-modelTest('dataset/test/33.jpg')
 modelTest('dataset/test/35.jpg')
 modelTest('dataset/test/37.jpg')
 modelTest('dataset/test/66.jpg')
