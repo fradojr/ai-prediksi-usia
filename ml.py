@@ -89,6 +89,8 @@ def modelTest(queryPath):
     q = np.array(q, dtype='float') / 255.0
 
     q_pred = model.predict(q)
+    print("prediksi: ")
+    print(q_pred)
     i = q_pred.argmax(axis=1)[0]
     label = lb.classes_[i]
 
